@@ -5,6 +5,7 @@ import 'package:productos_app/services/services.dart';
 import 'package:productos_app/ui/input_decorations.dart';
 import 'package:productos_app/widgets/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({Key? key}) : super(key: key);
@@ -61,7 +62,17 @@ class _ProductScreenBody extends StatelessWidget {
                       size: 40,
                       color: Colors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () async {
+                      final picker = new ImagePicker();
+                      final PickedFile? pickedFile = await picker.getImage(
+                          source: ImageSource.camera, imageQuality: 100);
+                      if (pickedFile == null) {
+                        print('No seleccionó nada');
+                      }
+                      //print('Tenemos imagen ${pickedFile!.path}');
+                      productService
+                          .updateSelectedProductImage(pickedFile!.path);
+                    },
                   ),
                   top: 60,
                   right: 20,
@@ -76,12 +87,22 @@ class _ProductScreenBody extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.save_outlined),
-        onPressed: () async {
-          if (!productForm.isValidForm()) return;
+        child: productService.isSaving
+            ? CircularProgressIndicator(
+                color: Colors.white,
+              )
+            : Icon(Icons.save_outlined),
+        onPressed: productService.isSaving
+            ? null
+            : () async {
+                if (!productForm.isValidForm()) return;
 
-          await productService.saveOrCreateProduct(productForm.product);
-        },
+                final String? imageUrl = await productService.uploadImage();
+
+                if (imageUrl != null) productForm.product.picture = imageUrl;
+
+                await productService.saveOrCreateProduct(productForm.product);
+              },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );
