@@ -11,13 +11,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: 'login',
+      initialRoute: 'checking',
       routes: {
         'login': (_) => LoginScreen(),
         'home': (_) => HomeScreen(),
         'product': (_) => ProductScreen(),
         'register': (_) => RegisterScreen(),
+        'checking': (_) => CheckAuthScreen(),
       },
+      scaffoldMessengerKey: NotificationsService.messegerKey,
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: Colors.grey[300],
         appBarTheme:

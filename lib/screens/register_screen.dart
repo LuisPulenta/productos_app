@@ -133,8 +133,8 @@ class _LoginForm extends StatelessWidget {
                       } else {
                         //Mostrar error en pantalla
                         print(errorMessage);
+                        loginForm.isLoading = false;
                       }
-                      loginForm.isLoading = false;
                     },
               disabledColor: Colors.grey,
               elevation: 0,
