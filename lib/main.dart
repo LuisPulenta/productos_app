@@ -3,35 +3,11 @@ import 'package:productos_app/screens/screens.dart';
 import 'package:productos_app/services/services.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(AppState());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Material App',
-      initialRoute: 'checking',
-      routes: {
-        'login': (_) => LoginScreen(),
-        'home': (_) => HomeScreen(),
-        'product': (_) => ProductScreen(),
-        'register': (_) => RegisterScreen(),
-        'checking': (_) => CheckAuthScreen(),
-      },
-      scaffoldMessengerKey: NotificationsService.messegerKey,
-      theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: Colors.grey[300],
-        appBarTheme:
-            AppBarTheme(elevation: 0, color: Colors.indigo, centerTitle: true),
-        floatingActionButtonTheme: FloatingActionButtonThemeData(
-            backgroundColor: Colors.indigo, elevation: 0),
-      ),
-    );
-  }
-}
+void main() => runApp(const AppState());
 
 class AppState extends StatelessWidget {
+  const AppState({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -43,7 +19,35 @@ class AppState extends StatelessWidget {
           create: (_) => ProductsService(),
         ),
       ],
-      child: MyApp(),
+      child: const MyApp(),
+    );
+  }
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Material App',
+      initialRoute: 'checking',
+      routes: {
+        'login': (_) => const LoginScreen(),
+        'home': (_) => const HomeScreen(),
+        'product': (_) => const ProductScreen(),
+        'register': (_) => const RegisterScreen(),
+        'checking': (_) => const CheckAuthScreen(),
+      },
+      scaffoldMessengerKey: NotificationsService.messegerKey,
+      theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: Colors.grey[300],
+        appBarTheme: const AppBarTheme(
+            elevation: 0, color: Colors.indigo, centerTitle: true),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+            backgroundColor: Colors.indigo, elevation: 0),
+      ),
     );
   }
 }

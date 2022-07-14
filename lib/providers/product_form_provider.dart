@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:productos_app/models/models.dart';
 
 class ProductFormProvider extends ChangeNotifier {
-  GlobalKey<FormState> formKey = new GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   Product product;
 
   ProductFormProvider(this.product, {child});
 
   updateAvailability(bool value) {
-    this.product.available = value;
+    product.available = value;
     notifyListeners();
   }
 

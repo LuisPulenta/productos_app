@@ -11,7 +11,7 @@ class ProductsService extends ChangeNotifier {
   final List<Product> products = [];
   late Product? selectedProduct;
 
-  final storage = FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
 
   File? newPictureFile;
 
@@ -47,9 +47,9 @@ class ProductsService extends ChangeNotifier {
     notifyListeners();
 
     if (product.id == null) {
-      await this.createProduct(product);
+      await createProduct(product);
     } else {
-      await this.updateProduct(product);
+      await updateProduct(product);
     }
 
     isSaving = false;
@@ -57,13 +57,10 @@ class ProductsService extends ChangeNotifier {
   }
 
   Future<String> updateProduct(Product product) async {
-    final url = Uri.https(_baseUrl, 'products/${product.id}.json',
+    Uri.https(_baseUrl, 'products/${product.id}.json',
         {'auth': await storage.read(key: 'token') ?? ''});
-    final resp = await http.put(url, body: product.toJson());
-    final decodedData = resp.body;
-    final index =
-        this.products.indexWhere((element) => element.id == product.id);
-    this.products[index] = product;
+    final index = products.indexWhere((element) => element.id == product.id);
+    products[index] = product;
     return product.id!;
   }
 
@@ -73,7 +70,7 @@ class ProductsService extends ChangeNotifier {
     final resp = await http.post(url, body: product.toJson());
     final decodedData = json.decode(resp.body);
     product.id = decodedData['name'];
-    this.products.add(product);
+    products.add(product);
     return product.id!;
   }
 
@@ -97,8 +94,8 @@ class ProductsService extends ChangeNotifier {
     final resp = await http.Response.fromStream(streamResponse);
 
     if (resp.statusCode != 200 && resp.statusCode != 201) {
-      print('algo salió mal');
-      print(resp.body);
+      //print('algo salió mal');
+      //print(resp.body);
       return null;
     }
 

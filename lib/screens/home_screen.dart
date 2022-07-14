@@ -13,13 +13,13 @@ class HomeScreen extends StatelessWidget {
     final productsServices = Provider.of<ProductsService>(context);
     final authServices = Provider.of<AuthService>(context, listen: false);
 
-    if (productsServices.isLoading) return LoadingScreen();
+    if (productsServices.isLoading) return const LoadingScreen();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Productos'),
+        title: const Text('Productos'),
         leading: IconButton(
-          icon: Icon(Icons.login_outlined),
+          icon: const Icon(Icons.login_outlined),
           onPressed: () {
             authServices.logout();
             Navigator.pushReplacementNamed(context, 'login');
@@ -40,10 +40,10 @@ class HomeScreen extends StatelessWidget {
         itemCount: productsServices.products.length,
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {
           productsServices.selectedProduct =
-              new Product(available: true, name: '', price: 0.0);
+              Product(available: true, name: '', price: 0.0);
           Navigator.pushNamed(context, 'product');
         },
       ),

@@ -8,7 +8,7 @@ class NotificationsService {
     final snackBar = SnackBar(
         content: Text(
       message,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.white,
         fontSize: 20,
       ),

@@ -45,7 +45,7 @@ class _ProductScreenBody extends StatelessWidget {
                 ),
                 Positioned(
                   child: IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back_ios_new,
                       size: 40,
                       color: Colors.white,
@@ -57,17 +57,18 @@ class _ProductScreenBody extends StatelessWidget {
                 ),
                 Positioned(
                   child: IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.camera_alt,
                       size: 40,
                       color: Colors.white,
                     ),
                     onPressed: () async {
-                      final picker = new ImagePicker();
+                      final picker = ImagePicker();
+                      // ignore: deprecated_member_use
                       final PickedFile? pickedFile = await picker.getImage(
                           source: ImageSource.camera, imageQuality: 100);
                       if (pickedFile == null) {
-                        print('No seleccionó nada');
+                        //print('No seleccionó nada');
                       }
                       //print('Tenemos imagen ${pickedFile!.path}');
                       productService
@@ -80,7 +81,7 @@ class _ProductScreenBody extends StatelessWidget {
               ],
             ),
             _ProductForm(),
-            SizedBox(
+            const SizedBox(
               height: 100,
             ),
           ],
@@ -88,10 +89,10 @@ class _ProductScreenBody extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: productService.isSaving
-            ? CircularProgressIndicator(
+            ? const CircularProgressIndicator(
                 color: Colors.white,
               )
-            : Icon(Icons.save_outlined),
+            : const Icon(Icons.save_outlined),
         onPressed: productService.isSaving
             ? null
             : () async {
@@ -118,7 +119,7 @@ class _ProductForm extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         width: double.infinity,
         height: 305,
         decoration: _buildBoxDecoration(),
@@ -127,20 +128,22 @@ class _ProductForm extends StatelessWidget {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextFormField(
                 initialValue: product.name,
                 onChanged: (value) => product.name = value,
                 validator: (value) {
-                  if (value == null || value.length < 1)
+                  if (value == null || value.isEmpty) {
                     return 'El nombre es obligatorio';
+                  }
+                  return null;
                 },
                 decoration: InputDecorations.authInputDecoration(
                     hintText: 'Nombre del producto', labelText: 'Nombre:'),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               TextFormField(
@@ -160,15 +163,15 @@ class _ProductForm extends StatelessWidget {
                 decoration: InputDecorations.authInputDecoration(
                     hintText: '\$150', labelText: 'Precio:'),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               SwitchListTile.adaptive(
-                  title: Text('Disponible'),
+                  title: const Text('Disponible'),
                   activeColor: Colors.indigo,
                   value: product.available,
                   onChanged: productForm.updateAvailability),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
             ],
@@ -180,14 +183,14 @@ class _ProductForm extends StatelessWidget {
 
   BoxDecoration _buildBoxDecoration() => BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             bottomRight: Radius.circular(25),
             bottomLeft: Radius.circular(25),
           ),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.05),
-              offset: Offset(0, 5),
+              offset: const Offset(0, 5),
               blurRadius: 5,
             )
           ]);
