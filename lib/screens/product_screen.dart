@@ -68,11 +68,12 @@ class _ProductScreenBody extends StatelessWidget {
                       final PickedFile? pickedFile = await picker.getImage(
                           source: ImageSource.camera, imageQuality: 100);
                       if (pickedFile == null) {
+                        return;
                         //print('No seleccionó nada');
                       }
                       //print('Tenemos imagen ${pickedFile!.path}');
                       productService
-                          .updateSelectedProductImage(pickedFile!.path);
+                          .updateSelectedProductImage(pickedFile.path);
                     },
                   ),
                   top: 60,
