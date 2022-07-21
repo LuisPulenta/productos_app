@@ -25,7 +25,7 @@ class RegisterScreen extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'Register: ',
+                    'Crear Cuenta: ',
                     style: Theme.of(context).textTheme.headline4,
                   ),
                   const SizedBox(

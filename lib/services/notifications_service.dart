@@ -6,13 +6,14 @@ class NotificationsService {
 
   static showSnackbar(String message) {
     final snackBar = SnackBar(
+        backgroundColor: Colors.red,
         content: Text(
-      message,
-      style: const TextStyle(
-        color: Colors.white,
-        fontSize: 20,
-      ),
-    ));
+          message,
+          style: const TextStyle(
+            color: Colors.orange,
+            fontSize: 16,
+          ),
+        ));
     messegerKey.currentState!.showSnackBar(snackBar);
   }
 }
