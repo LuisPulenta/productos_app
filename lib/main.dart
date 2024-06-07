@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         'register': (_) => const RegisterScreen(),
         'checking': (_) => const CheckAuthScreen(),
       },
-      scaffoldMessengerKey: NotificationsService.messegerKey,
+      scaffoldMessengerKey: NotificationsService.messengerKey,
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: Colors.grey[300],
         appBarTheme: const AppBarTheme(

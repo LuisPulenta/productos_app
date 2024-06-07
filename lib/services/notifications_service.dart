@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NotificationsService {
-  static GlobalKey<ScaffoldMessengerState> messegerKey =
+  static GlobalKey<ScaffoldMessengerState> messengerKey =
       GlobalKey<ScaffoldMessengerState>();
 
   static showSnackbar(String message) {
@@ -14,6 +14,6 @@ class NotificationsService {
             fontSize: 16,
           ),
         ));
-    messegerKey.currentState!.showSnackBar(snackBar);
+    messengerKey.currentState!.showSnackBar(snackBar);
   }
 }
