@@ -21,6 +21,7 @@ class AuthBackGround extends StatelessWidget {
   }
 }
 
+//---------------------------------------------------------------------
 class HeaderIcon extends StatelessWidget {
   const HeaderIcon({
     Key? key,
@@ -42,6 +43,7 @@ class HeaderIcon extends StatelessWidget {
   }
 }
 
+//---------------------------------------------------------------------
 class _PurpleBox extends StatelessWidget {
   const _PurpleBox({Key? key}) : super(key: key);
 
@@ -55,29 +57,29 @@ class _PurpleBox extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            child: _Bubble(),
             top: 90,
             left: 30,
+            child: _Bubble(),
           ),
           Positioned(
-            child: _Bubble(),
             top: -40,
             left: -30,
+            child: _Bubble(),
           ),
           Positioned(
-            child: _Bubble(),
             top: -50,
             right: -20,
+            child: _Bubble(),
           ),
           Positioned(
-            child: _Bubble(),
             bottom: -50,
             left: 10,
+            child: _Bubble(),
           ),
           Positioned(
-            child: _Bubble(),
             bottom: 120,
             right: 20,
+            child: _Bubble(),
           ),
         ],
       ),
@@ -91,6 +93,7 @@ class _PurpleBox extends StatelessWidget {
       ]));
 }
 
+//---------------------------------------------------------------------
 class _Bubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

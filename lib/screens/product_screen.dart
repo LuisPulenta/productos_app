@@ -44,6 +44,8 @@ class _ProductScreenBody extends StatelessWidget {
                   url: productService.selectedProduct?.picture,
                 ),
                 Positioned(
+                  top: 60,
+                  left: 20,
                   child: IconButton(
                     icon: const Icon(
                       Icons.arrow_back_ios_new,
@@ -52,10 +54,10 @@ class _ProductScreenBody extends StatelessWidget {
                     ),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
-                  top: 60,
-                  left: 20,
                 ),
                 Positioned(
+                  top: 60,
+                  right: 20,
                   child: IconButton(
                     icon: const Icon(
                       Icons.camera_alt,
@@ -76,8 +78,6 @@ class _ProductScreenBody extends StatelessWidget {
                           .updateSelectedProductImage(pickedFile.path);
                     },
                   ),
-                  top: 60,
-                  right: 20,
                 )
               ],
             ),
@@ -89,11 +89,6 @@ class _ProductScreenBody extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: productService.isSaving
-            ? const CircularProgressIndicator(
-                color: Colors.white,
-              )
-            : const Icon(Icons.save_outlined),
         onPressed: productService.isSaving
             ? null
             : () async {
@@ -105,6 +100,11 @@ class _ProductScreenBody extends StatelessWidget {
 
                 await productService.saveOrCreateProduct(productForm.product);
               },
+        child: productService.isSaving
+            ? const CircularProgressIndicator(
+                color: Colors.white,
+              )
+            : const Icon(Icons.save_outlined),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );

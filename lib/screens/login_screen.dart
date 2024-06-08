@@ -26,7 +26,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   Text(
                     'Login: ',
-                    style: Theme.of(context).textTheme.headline4,
+                    style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   const SizedBox(
                     height: 30,
@@ -65,6 +65,8 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
+//---------------------------------------------------------------------------
+
 class _LoginForm extends StatelessWidget {
   const _LoginForm({Key? key}) : super(key: key);
 
@@ -77,23 +79,29 @@ class _LoginForm extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
-          TextFormField(
-            autocorrect: false,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecorations.authInputDecoration(
-                hintText: 'correo@gmail.com',
-                labelText: 'Correo electrónico',
-                prefixIcon: Icons.alternate_email_outlined),
-            onChanged: (value) => loginForm.email = value,
-            validator: (value) {
-              String pattern =
-                  r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-              RegExp regExp = RegExp(pattern);
+          Container(
+            // decoration: BoxDecoration(
+            //   borderRadius: BorderRadius.circular(10),
+            //   border: Border.all(color: Colors.blueAccent),
+            // ),
+            child: TextFormField(
+              autocorrect: false,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecorations.authInputDecoration(
+                  hintText: 'correo@gmail.com',
+                  labelText: 'Correo electrónico',
+                  prefixIcon: Icons.alternate_email_outlined),
+              onChanged: (value) => loginForm.email = value,
+              validator: (value) {
+                String pattern =
+                    r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                RegExp regExp = RegExp(pattern);
 
-              return regExp.hasMatch(value ?? '')
-                  ? null
-                  : 'El correo ingresado no tiene un formato válido';
-            },
+                return regExp.hasMatch(value ?? '')
+                    ? null
+                    : 'El correo ingresado no tiene un formato válido';
+              },
+            ),
           ),
           TextFormField(
             autocorrect: false,
