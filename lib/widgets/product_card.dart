@@ -52,6 +52,7 @@ class ProductCard extends StatelessWidget {
   }
 }
 
+//---------------------------------------------------------------------------
 class _BackgroundImage extends StatelessWidget {
   final String? url;
 
@@ -71,14 +72,16 @@ class _BackgroundImage extends StatelessWidget {
               )
             : FadeInImage(
                 placeholder: const AssetImage('assets/jar-loading.gif'),
+                // image: NetworkImage('https://via.placeholder.com/400x300/00ff00'),
                 image: NetworkImage(url!),
-                fit: BoxFit.contain,
+                fit: BoxFit.cover,
               ),
       ),
     );
   }
 }
 
+//---------------------------------------------------------------------------
 class _ProductDetails extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -99,6 +102,8 @@ class _ProductDetails extends StatelessWidget {
           children: [
             Text(
               title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                   fontSize: 20,
                   color: Colors.white,
@@ -130,6 +135,7 @@ class _ProductDetails extends StatelessWidget {
   }
 }
 
+//---------------------------------------------------------------------------
 class _PriceTag extends StatelessWidget {
   final double price;
 
@@ -165,6 +171,7 @@ class _PriceTag extends StatelessWidget {
   }
 }
 
+//---------------------------------------------------------------------------
 class _NotAvailable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

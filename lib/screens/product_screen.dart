@@ -21,6 +21,7 @@ class ProductScreen extends StatelessWidget {
   }
 }
 
+//---------------------------------------------------------------------------
 class _ProductScreenBody extends StatelessWidget {
   const _ProductScreenBody({
     Key? key,
@@ -111,6 +112,7 @@ class _ProductScreenBody extends StatelessWidget {
   }
 }
 
+//---------------------------------------------------------------------------
 class _ProductForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
