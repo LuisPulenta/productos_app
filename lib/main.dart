@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 void main() => runApp(const AppState());
 
+//----------------------------------------------------------------------
 class AppState extends StatelessWidget {
   const AppState({Key? key}) : super(key: key);
 
@@ -24,6 +25,7 @@ class AppState extends StatelessWidget {
   }
 }
 
+//----------------------------------------------------------------------
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 

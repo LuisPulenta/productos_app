@@ -22,6 +22,7 @@ class ProductsService extends ChangeNotifier {
     loadProducts();
   }
 
+//--------------------------------------------------------------------------
   Future<List<Product>> loadProducts() async {
     isLoading = true;
     notifyListeners();
@@ -42,6 +43,7 @@ class ProductsService extends ChangeNotifier {
     return products;
   }
 
+  //--------------------------------------------------------------------------
   Future saveOrCreateProduct(Product product) async {
     isSaving = true;
     notifyListeners();
@@ -56,6 +58,7 @@ class ProductsService extends ChangeNotifier {
     notifyListeners();
   }
 
+  //--------------------------------------------------------------------------
   Future<String> updateProduct(Product product) async {
     Uri.https(_baseUrl, 'products/${product.id}.json',
         {'auth': await storage.read(key: 'token') ?? ''});
@@ -64,6 +67,7 @@ class ProductsService extends ChangeNotifier {
     return product.id!;
   }
 
+  //--------------------------------------------------------------------------
   Future<String> createProduct(Product product) async {
     final url = Uri.https(_baseUrl, 'products.json',
         {'auth': await storage.read(key: 'token') ?? ''});
@@ -74,6 +78,7 @@ class ProductsService extends ChangeNotifier {
     return product.id!;
   }
 
+  //--------------------------------------------------------------------------
   Future<String?> uploadImage() async {
     if (newPictureFile == null) return null;
 
@@ -105,6 +110,7 @@ class ProductsService extends ChangeNotifier {
     //print(resp.body);
   }
 
+  //--------------------------------------------------------------------------
   void updateSelectedProductImage(String path) {
     selectedProduct?.picture = path;
     newPictureFile = File.fromUri(Uri(path: path));
