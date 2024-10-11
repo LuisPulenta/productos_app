@@ -132,6 +132,15 @@ class _LoginForm extends StatelessWidget {
                     if (!loginForm.isValidForm()) return;
                     loginForm.isLoading = true;
 
+                    //------------------- BORRAR -----------------------------
+                    // await Future.delayed(
+                    //   const Duration(seconds: 2),
+                    // ).then((value) {
+                    //   loginForm.isLoading = false;
+                    //   Navigator.pushReplacementNamed(context, 'home');
+                    // });
+                    //------------------- BORRAR -----------------------------
+
                     final String? errorMessage = await authService.login(
                         loginForm.email, loginForm.password);
 

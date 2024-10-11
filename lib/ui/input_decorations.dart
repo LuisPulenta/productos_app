@@ -8,6 +8,11 @@ class InputDecorations {
     IconData? prefixIcon,
   }) {
     return InputDecoration(
+      // border: OutlineInputBorder(
+      //   borderRadius: BorderRadius.all(
+      //     Radius.circular(15),
+      //   ),
+      // ),
       enabledBorder: const UnderlineInputBorder(
         borderSide: BorderSide(
           color: Colors.deepPurple,
