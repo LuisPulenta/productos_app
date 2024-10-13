@@ -184,6 +184,7 @@ class _ProductForm extends StatelessWidget {
     );
   }
 
+//---------------------------------------------------------------------------
   BoxDecoration _buildBoxDecoration() => BoxDecoration(
           color: Colors.white,
           borderRadius: const BorderRadius.only(

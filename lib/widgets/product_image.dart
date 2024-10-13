@@ -26,6 +26,7 @@ class ProductImage extends StatelessWidget {
     );
   }
 
+//-------------------------------------------------------------------------------
   BoxDecoration _buildBoxDecoration() => BoxDecoration(
           color: Colors.black,
           borderRadius: const BorderRadius.only(
@@ -38,6 +39,7 @@ class ProductImage extends StatelessWidget {
             )
           ]);
 
+//-------------------------------------------------------------------------------
   Widget getImage(String? picture) {
     if (picture == null) {
       return const Image(
